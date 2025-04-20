@@ -68,13 +68,6 @@ class UserService {
             'role_id' => $data['role'] ?? $user->role_id,
             'status' => $data['status'] ?? $user->status,
             'avatar' => $data['avatar'] ?? $user->avatar,
-            'company_name' => $data['companyName'] ?? $user->company_name,
-            'company_address' => $data['companyAddress'] ?? $user->company_address,
-            'company_phone_number' => $data['companyPhoneNumber'] ?? $user->company_phone_number,
-            'company_tax_code' => $data['companyTaxCode'] ?? $user->company_tax_code,
-            'contact_person_name' => $data['contactPersonName'] ?? $user->contact_person_name,
-            'representative_id_card' => $data['representativeIdCard'] ?? $user->representative_id_card,
-            'representative_id_card_date' => $data['representativeIdCardDate'] ?? $user->representative_id_card_date,
         ];
 
         $user = $this->userRepository->update($id, $dataUpdate);

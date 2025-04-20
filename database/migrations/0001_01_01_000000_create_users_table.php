@@ -19,14 +19,6 @@ return new class extends Migration
             $table->string('email')->unique()->comment('Email');
             $table->string('avatar')->nullable()->comment('Ảnh đại diện');
             $table->string('google_id')->nullable()->comment('ID của google');
-            $table->string('company_name',255)->nullable()->comment('Tên công ty');
-            $table->string('company_address')->nullable()->comment('Địa chỉ công ty');
-            $table->string('company_phone_number',11)->nullable()->comment('Số điện thoại công ty');
-            $table->string('company_tax_code',15)->nullable()->comment('Mã số thuế công ty');
-            $table->string('contact_person_name',255)->nullable()->comment('Tên người liên hệ');
-            $table->string('representative_id_card',length: 12)->nullable()->comment('Số CMND người đại diện');
-            $table->string('representative_id_card_date',10)->nullable()->comment('Ngày cấp CMND');
-            $table->string('contact_person_position',255)->nullable()->comment('Chức vụ người liên hệ');
             $table->enum('status', AccountStatus::getValues())->default(AccountStatus::NOT_ACTIVE)->comment('Trạng thái tài khoản');
             $table->timestamp('email_verified_at')->nullable()->comment('Thời gian xác thực email');
             $table->string('password')->comment('Mật khẩu');
