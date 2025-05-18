@@ -6,7 +6,10 @@ use App\Repositories\Auth\AuthRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
+
+use function Illuminate\Log\log;
 
 class AuthService
 {
@@ -88,8 +91,9 @@ class AuthService
                 ];
                 $user =  $this->authRepository->register($data);
             }
-            $tokenName = 'SocialLoginToken_'.now();
-            $token = $user->createToken($tokenName)->plainTextToken;
+            $tokenName = 'SocialLoginToken_'.now()->format('Y_m_d_H_i_s');
+            //log token in terminal
+            $token = $user->createToken($tokenName || "SocialLoginToken_")->plainTextToken;
             return redirect()->away(config('app.frontend_url').'/auth/google?token='.$token);
 
         } catch (\Exception $e) {

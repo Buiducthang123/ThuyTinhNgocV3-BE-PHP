@@ -41,7 +41,7 @@ Route::patch('/user/update-me', [UserController::class, 'updateMe'])->middleware
 Route::get('/users', [UserController::class, 'index'])->middleware(['auth:sanctum','admin'])->name('users');
 Route::get('/user/{id}', [UserController::class, 'show'])->middleware(['auth:sanctum','admin'])->name('user.show');
 Route::patch('/user/{userId}', [UserController::class, 'update'])->middleware(['auth:sanctum','admin'])->name('user.update');
-
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->middleware(['auth:sanctum','admin'])->name('user.delete');
 
 //Role Routes
 Route::get('/roles', [RoleController::class, 'getAll'])->middleware(['auth:sanctum','admin'])->name('roles');

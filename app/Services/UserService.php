@@ -77,4 +77,22 @@ class UserService {
         }
         return $user;
     }
+
+    public function delete($id)
+    {
+        $user = $this->userRepository->find($id);
+
+        if (!$user) {
+            return abort(404, 'Không tìm thấy người dùng');
+        }
+
+        $user = $this->userRepository->delete($id);
+
+        if (!$user) {
+            return abort(500, 'Có lỗi xảy ra');
+        }
+        return response()->json([
+            'message' => 'Xóa người dùng thành công'
+        ]);
+    }
 }

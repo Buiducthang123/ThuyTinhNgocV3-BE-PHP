@@ -39,4 +39,9 @@ class UserController extends Controller
     {
         return $this->userServices->update($userId, $request->all());
     }
+
+    public function destroy($id)
+    {
+        return $this->userServices->delete($id);
+    }
 }
